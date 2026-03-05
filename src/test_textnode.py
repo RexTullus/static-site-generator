@@ -9,7 +9,7 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(node, node2)
 
     def test_enum_values(self):
-        self.assertEqual(TextType.NORMAL.value, "normal")
+        self.assertEqual(TextType.TEXT.value, "text")
         self.assertEqual(TextType.BOLD.value, "bold")
         self.assertEqual(TextType.ITALIC.value, "italic")
         self.assertEqual(TextType.CODE.value, "code")
@@ -17,15 +17,15 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(TextType.IMAGE.value, "image")
 
     def test_text_node_initialization(self):
-        node = TextNode("Hello, World!", TextType.NORMAL, "http://example.com")
+        node = TextNode("Hello, World!", TextType.TEXT, "http://example.com")
         self.assertEqual(node.text, "Hello, World!")
-        self.assertEqual(node.text_type, TextType.NORMAL)
+        self.assertEqual(node.text_type, TextType.TEXT)
         self.assertEqual(node.url, "http://example.com")
 
     def test_text_node_equality(self):
         node1 = TextNode("Hello", TextType.BOLD, "http://example.com")
         node2 = TextNode("Hello", TextType.BOLD, "http://example.com")
-        node3 = TextNode("Goodbye", TextType.NORMAL, "http://example.com")
+        node3 = TextNode("Goodbye", TextType.TEXT, "http://example.com")
         node4 = TextNode("Hello", TextType.BOLD)
 
         self.assertEqual(node1, node2)  # Should be equal
@@ -41,7 +41,7 @@ class TestTextNode(unittest.TestCase):
         self.assertIsNone(node.url)
 
     def test_text(self):
-        node = TextNode("This is a text node", TextType.NORMAL)
+        node = TextNode("This is a text node", TextType.TEXT)
         html_node = text_node_to_html_node(node)
         self.assertEqual(html_node.tag, None)
         self.assertEqual(html_node.value, "This is a text node")

@@ -1,5 +1,6 @@
 import re
 
+from enum import Enum
 from textnode import TextNode, TextType
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
@@ -99,16 +100,5 @@ def text_to_textnodes(text):
     nodes = split_nodes_delimiter(nodes, "`", TextType.CODE)
     nodes = split_nodes_image(nodes)
     nodes = split_nodes_link(nodes)
-    
     return nodes
 
-def markdown_to_blocks(markdown):
-    raw_blocks = markdown.split("\n\n")
-    blocks = []
-
-    for block in raw_blocks:
-        if block != "":
-            blocks.append(block.strip())
-
-    return blocks
-    

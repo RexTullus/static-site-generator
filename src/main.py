@@ -1,10 +1,14 @@
-import os, shutil
+import os, shutil, sys
 
 from generate_page import generate_pages_recursive
 
 def main():
-    copy_static("static", "public")
-    generate_pages_recursive("content", "template.html", "public")
+    if len(sys.argv) > 1:
+        basepath = sys.argv[1]
+    else:
+        basepath = "/"
+    copy_static("static", "docs")
+    generate_pages_recursive("content", "template.html", "docs", basepath)
 
 def copy_static(src, dst):
     if os.path.exists(dst):

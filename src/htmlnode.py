@@ -40,7 +40,7 @@ class LeafNode(HTMLNode):
                 f", props={self.props})")
 
     def to_html(self):
-        if not self.value:
+        if self.value == None:
             raise ValueError("No value set")
 
         if not self.tag:

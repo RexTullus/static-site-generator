@@ -116,7 +116,7 @@ def block_to_html_node(block):
         return heading_to_html_node(block)
     if block_type == BlockType.CODE:
         return code_to_html_node(block)
-    if block_type == BlockType.OLIST:
+    if block_type == BlockType.OLISTLIST:
         return olist_to_html_node(block)
     if block_type == BlockType.ULIST:
         return ulist_to_html_node(block)

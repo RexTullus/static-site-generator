@@ -1,10 +1,7 @@
 import os, shutil
 
-from generate_page import generate_page
-
 def main():
     copy_static("static", "public")
-    generate_page("content/index.md", "template.html", "public/index.html")
 
 def copy_static(src, dst):
     if os.path.exists(dst):
@@ -22,6 +19,6 @@ def copy_recursive(src, dst):
         else:
             os.mkdir(dest_path)
             copy_recursive(source_path, dest_path)
-   
+
 if __name__ == "__main__":
     main()
